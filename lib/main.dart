@@ -12,8 +12,11 @@ void main() {
         leading: Icon(Icons.arrow_back),
         title: Text('This is AppBar'),
       ),
-      floatingActionButton: FloatingActionButton(child: Text('Add'),
-        onPressed: () {},
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add_circle_outline),
+        onPressed: () {
+          print('You Click Floating');
+        },
       ),
     ),
   );

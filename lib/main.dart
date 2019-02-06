@@ -12,6 +12,9 @@ void main() {
         leading: Icon(Icons.arrow_back),
         title: Text('This is AppBar'),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+      ),
     ),
   );
 

@@ -13,14 +13,19 @@ class App extends StatefulWidget {
 class AppState extends State<App> {
   
   int counter = 0;
-  List<String> contents = ['https://via.placeholder.com/600/92c952'];
+  List<String> contents = ['http://androidthai.in.th/mua/lmage/food52.jpg'];
 
   readJSON() async {
 
     counter += 1; 
-    var response = await get('https://jsonplaceholder.typicode.com/photos/$counter');
+    var response = await get('https://www.androidthai.in.th/sso/getFoodWhereIdMaster.php?isAdd=true&id=$counter');
     var jsonReceive = json.decode(response.body);
-    contents.add(jsonReceive['url']);
+    print('jsonReceive ==> $jsonReceive');
+
+    for (var data in jsonReceive) {
+      contents.add(data['ImagePath']);
+    }
+
   }
 
   @override

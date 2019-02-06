@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' show get;
+import 'dart:convert';
 
 class App extends StatefulWidget {
   @override
@@ -9,10 +11,23 @@ class App extends StatefulWidget {
 }
 
 class AppState extends State<App> {
-  String urlJSON =
-      "https://www.androidthai.in.th/sso/getFoodWhereIdMaster.php?isAdd=true&id=";
+  
   int counter = 0;
   List<String> contents = ['counter ==> 0'];
+
+  readJSON() async {
+
+    counter += 1;
+    print('counter = $counter');
+    
+    var response = await get('https://jsonplaceholder.typicode.com/photos/$counter');
+    var jsonReceive = json.decode(response.body);
+    print('jsonReceive ==> $jsonReceive');
+    var test = jsonReceive['ImagePath'];
+    print('NameFood ==> $test');
+    contents.add(jsonReceive['url']);
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +52,7 @@ class AppState extends State<App> {
           child: Icon(Icons.add_circle_outline),
           onPressed: () {
             setState(() {
-              counter += 1;
-              print('counter = $counter');
-              contents.add('counter ==> $counter');
+              readJSON();
             });
           },
         ),

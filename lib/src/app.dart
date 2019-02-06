@@ -19,9 +19,9 @@ class AppState extends State<App> {
     return MaterialApp(
       home: Scaffold(
         body: ListView.builder(
-          itemCount: 10,
+          itemCount: contents.length,
           itemBuilder: (context, int index) {
-            return Text(contents[0]);
+            return Text(contents[index]);
           },
         ),
         appBar: AppBar(
@@ -39,6 +39,7 @@ class AppState extends State<App> {
             setState(() {
               counter += 1;
               print('counter = $counter');
+              contents.add('counter ==> $counter');
             });
           },
         ),

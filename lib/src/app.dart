@@ -13,19 +13,14 @@ class App extends StatefulWidget {
 class AppState extends State<App> {
   
   int counter = 0;
-  List<String> contents = ['counter ==> 0'];
+  List<String> contents = ['https://via.placeholder.com/600/92c952'];
 
   readJSON() async {
 
-    counter += 1;
-    print('counter = $counter');
-    
+    counter += 1; 
     var response = await get('https://jsonplaceholder.typicode.com/photos/$counter');
     var jsonReceive = json.decode(response.body);
     contents.add(jsonReceive['url']);
-
-
-
   }
 
   @override
@@ -34,8 +29,8 @@ class AppState extends State<App> {
       home: Scaffold(
         body: ListView.builder(
           itemCount: contents.length,
-          itemBuilder: (context, int index) {
-            return Text(contents[index]);
+          itemBuilder: (context, counter) {
+            return Image.network(contents[counter]);
           },
         ),
         appBar: AppBar(

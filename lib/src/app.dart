@@ -22,10 +22,9 @@ class AppState extends State<App> {
     
     var response = await get('https://jsonplaceholder.typicode.com/photos/$counter');
     var jsonReceive = json.decode(response.body);
-    print('jsonReceive ==> $jsonReceive');
-    var test = jsonReceive['ImagePath'];
-    print('NameFood ==> $test');
     contents.add(jsonReceive['url']);
+
+
 
   }
 

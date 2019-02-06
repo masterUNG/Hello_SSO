@@ -9,15 +9,21 @@ class App extends StatefulWidget {
 }
 
 class AppState extends State<App> {
-
+  String urlJSON =
+      "https://www.androidthai.in.th/sso/getFoodWhereIdMaster.php?isAdd=true&id=";
   int counter = 0;
+  List<String> contents = ['counter ==> 0'];
 
   @override
   Widget build(BuildContext context) {
-    
     return MaterialApp(
       home: Scaffold(
-        body: Text('counter ==> $counter'),
+        body: ListView.builder(
+          itemCount: 10,
+          itemBuilder: (context, int index) {
+            return Text(contents[0]);
+          },
+        ),
         appBar: AppBar(
           actions: <Widget>[
             Icon(Icons.android),
